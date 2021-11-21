@@ -18,7 +18,7 @@ def readline(ser):
 try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
-    ser.write(b'=?r\r')
+    ser.write(b'd0\r')
     msg = ser.read(19)
     print(msg)
     # print(ser.readline().decode('ascii', errors='replace'))
