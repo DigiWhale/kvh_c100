@@ -19,7 +19,7 @@ try:
   ser = serial.Serial('/dev/ttyS0', 4800, timeout=1)
   while ser:
     # ser.write(b'd0\r')
-    print(ser.read(19).decode('utf-8'))
+    print(ser.read().decode('utf-8'))
 except Exception as e:
   print(e)
   ser.close()
