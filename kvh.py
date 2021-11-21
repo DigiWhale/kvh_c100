@@ -24,7 +24,7 @@ try:
     print(msg, msg.hex(), chr(int(msg.hex(), 16)), int(msg.hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
     byte_array = bytearray.fromhex(msg.hex())
-    print(byte_array.decode('ASCII'))
+    print(byte_array)
 except Exception as e:
   print(e)
   ser.close()
