@@ -21,6 +21,7 @@ try:
     ser.write(b'd0\r')
     msg = ser.read(19)
     print(msg.hex())
+    ser.write(b'd1\r')
     msg = ser.read(19)
     print(msg.hex())
     # print(ser.readline().decode('ascii', errors='replace'))
