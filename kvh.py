@@ -18,6 +18,7 @@ def readline(ser):
 try:
   ser = serial.Serial('/dev/ttyS0', 9600, timeout=1)
   while ser:
+    ser.write(b'd0\r')
     print(readline(ser))
 except Exception as e:
   print(e)
