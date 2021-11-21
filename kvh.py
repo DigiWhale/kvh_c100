@@ -21,7 +21,8 @@ try:
     # ser.write(b'd0\r')
     # print(ser.read(19))
     # print(int(ser.read(1).hex(), 16))
-    print(bytearray.fromhex(ser.read(1).hex()).decode())
+    # print(bytearray.fromhex(ser.read(1).hex()).decode())
+    print(bytearray.fromhex("70 61 75 6C").decode())
 except Exception as e:
   print(e)
   ser.close()
