@@ -26,7 +26,7 @@ try:
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
     # byte_array = bytearray.fromhex(msg.hex())
     # print(byte_array)
-    print(str(msg.hex(),'utf-8'))
+    print(str(msg,'utf-8'))
 except Exception as e:
   print(e)
   ser.close()
