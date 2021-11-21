@@ -19,10 +19,9 @@ try:
   ser = serial.Serial('/dev/ttyS0', 4800, timeout=1)
   while ser:
     # ser.write(b'd0\r')
-    # print(ser.read(19))
+    print(ser.read(19))
     # print(int(ser.read(1).hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
-    print(bytearray.fromhex(ser.read(19).hex()).decode())
 except Exception as e:
   print(e)
   ser.close()
