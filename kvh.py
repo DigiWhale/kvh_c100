@@ -20,7 +20,7 @@ try:
   while ser:
     # ser.write(b'd0\r')
     # print(ser.read(19))
-    print(ser.read(19).hex().decode('utf-8'))
+    print(ser.read(19).decode("ASCII"))
 except Exception as e:
   print(e)
   ser.close()
