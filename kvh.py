@@ -20,7 +20,7 @@ try:
   while ser:
     # ser.write(b'd0\r')
     # print(ser.read(19))
-    print(int((ser.read().split('x')[1]), 16))
+    print(ser.read())
 except Exception as e:
   print(e)
   ser.close()
