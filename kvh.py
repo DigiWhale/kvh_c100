@@ -19,7 +19,7 @@ try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
     # ser.write(b'd0\r')
-    msg = bytearray(["64", "30"])
+    msg = bytearray([64, 30])
     print(msg)
     ser.write(msg)
     print(ser.read(19).decode('ascii', errors='replace'))
