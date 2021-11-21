@@ -20,10 +20,10 @@ try:
   while ser:
     ser.write(b'd0\r')
     msg = ser.read(19)
-    print(msg.hex())
+    print(1, msg.hex())
     ser.write(b'?r\r')
     msg = ser.read(19)
-    print(msg.hex())
+    print(2, msg.hex())
     # print(ser.readline().decode('ascii', errors='replace'))
     # print(msg, msg.hex(), chr(int(msg.hex(), 16)), int(msg.hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
