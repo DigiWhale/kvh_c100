@@ -20,7 +20,7 @@ try:
   while ser:
     # ser.write(b'd0\r')
     # ser.write(b'd0\r')
-    print(ser.read(19).decode('ascii', errors='replace'))
+    print(ser.readline().decode('ascii', errors='replace'))
     # print(ser.read(19))
     # print(int(ser.read(1).hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
