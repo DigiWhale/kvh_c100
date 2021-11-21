@@ -20,7 +20,7 @@ try:
   while ser:
     # ser.write(b'd0\r')
     # print(ser.read(19))
-    print(ser.read(1).hex())
+    print(ser.read(19).hex())
 except Exception as e:
   print(e)
   ser.close()
