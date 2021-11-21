@@ -21,7 +21,7 @@ try:
     ser.write(b'=?r\r')
     msg = ser.read(1)
     # print(ser.readline().decode('ascii', errors='replace'))
-    print(msg, chr(int.from_bytes(msg, byteorder='big')), int(msg.hex(), 16))
+    print(msg, chr(int.from_hex(msg)), int(msg.hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
 except Exception as e:
   print(e)
