@@ -18,11 +18,11 @@ def readline(ser):
 try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
-    ser.write(b'=d0\r')
+    ser.write(b'=?r\r')
 
     # print(ser.readline().decode('ascii', errors='replace'))
-    print(chr(int.from_bytes(ser.read(1), byteorder='big')))
-    # print(ser.read(19))
+    # print(chr(int.from_bytes(ser.read(1), byteorder='big')))
+    print(ser.read(19))
     # print(int(ser.read(1).hex(), 16))
     # print(bytearray.fromhex(ser.read(1).hex()).decode())
 except Exception as e:
