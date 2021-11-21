@@ -16,7 +16,7 @@ def readline(ser):
     return bytes(line) 
 
 try:
-  ser = serial.Serial('/dev/ttyS0', 4800, timeout=1)
+  ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
     # ser.write(b'd0\r')
     ser.write(b'd0\r')
