@@ -6,6 +6,7 @@ def readline(ser):
     line = bytearray()
     while True:
         c = ser.read(1)
+        print(c)
         if c:
             line += c
             if line[-leneol:] == eol:
