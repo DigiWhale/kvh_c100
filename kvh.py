@@ -19,7 +19,7 @@ def readline(ser):
 try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
-    # ser.write('s\r\n'.encode('ascii'))
+    ser.write('seb'.encode('ascii'))
     # msg = ser.read(19)
     # print(1, msg.hex())
     # ser.write('?r\r\n'.encode('ascii'))
