@@ -17,7 +17,7 @@ try:
     #     x += 2
     #     y += 2
     # print ("ascii_string", ascii_string)
-    i = int(ser.read(1), 16)
+    i = int(ser.read(1).hex(), 16)
     print(str(i))
 except Exception as e:
   print(e)
