@@ -1,4 +1,5 @@
 import serial
+import binascii
 
 def readline(ser):
     eol = b'\r'
@@ -18,9 +19,9 @@ def readline(ser):
 try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
-    ser.write('s\r\n'.encode('ascii'))
-    msg = ser.read(19)
-    print(1, msg.hex())
+    # ser.write('s\r\n'.encode('ascii'))
+    # msg = ser.read(19)
+    # print(1, msg.hex())
     # ser.write('?r\r\n'.encode('ascii'))
     # msg = ser.read(19)
     # print(2, msg.hex())
@@ -30,6 +31,8 @@ try:
     # byte_array = bytearray.fromhex(msg.hex())
     # print(byte_array)
     # print(str(msg,'utf-8'))
+    binary_string = binascii.unhexlify(ser.read(1).hex())
+    print(binary_string)
 except Exception as e:
   print(e)
   ser.close()
