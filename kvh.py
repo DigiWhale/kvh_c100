@@ -31,8 +31,9 @@ try:
     # byte_array = bytearray.fromhex(msg.hex())
     # print(byte_array)
     # print(str(msg,'utf-8'))
-    binary_string = binascii.unhexlify(ser.read(19)[1:])
-    print(binary_string)
+    # binary_string = binascii.unhexlify(ser.read(19)[1:])
+    # print(binary_string)
+    print(ser.read(19))
 except Exception as e:
   print(e)
   ser.close()
