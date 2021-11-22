@@ -3,6 +3,7 @@ import serial
 try:
   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   while ser:
+    ser.write(b'100\48\13')
     hex_data = ser.read(19).hex()
     print('hex_data', hex_data)
     ascii_string = ''
