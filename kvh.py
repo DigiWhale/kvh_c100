@@ -1,7 +1,7 @@
 import serial
 
 try:
-  ser = serial.Serial('/dev/ttyUSB_IMU', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
+  ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
   heading = 0
   while ser:
     # init_heading = float(ser.read(19).decode('utf-8').split(',')[1])
