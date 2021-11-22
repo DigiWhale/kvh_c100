@@ -17,8 +17,11 @@ try:
     #     x += 2
     #     y += 2
     # print ("ascii_string", ascii_string)
-    i = int(ser.read(1).hex(), 16)
-    print(str(i))
+    byte = ser.read(1)
+    hex = byte.hex()
+    integer = int(hex, 16)
+    string = chr(integer)
+    print("byte", byte, "hex", hex, "integer", integer, "string", string)
 except Exception as e:
   print(e)
   ser.close()
