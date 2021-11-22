@@ -35,6 +35,7 @@ try:
     # print(binary_string)
     # print(ser.read(19))
     hex_data = ser.read(19).hex()
+    print('hex_data', hex_data)
     ascii_string = ''
     x = 0
     y = 2
