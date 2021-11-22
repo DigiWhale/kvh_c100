@@ -33,7 +33,17 @@ try:
     # print(str(msg,'utf-8'))
     # binary_string = binascii.unhexlify(ser.read(19)[1:])
     # print(binary_string)
-    print(ser.read(19))
+    # print(ser.read(19))
+    hex_data = ser.read(19).hex()
+    ascii_string = ''
+    x = 0
+    y = 2
+    l = len(hex_data)
+    while y <= l:
+        ascii_string += chr(int(hex_data[x:y], 16))
+        x += 2
+        y += 2
+    print (ascii_string)
 except Exception as e:
   print(e)
   ser.close()
