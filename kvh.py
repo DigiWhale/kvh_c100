@@ -31,8 +31,9 @@ class Kvh_Compass:
   def get_rate(self):
     self.ser.write(b'?r\r\n')
     raw_rate = self.ser.readline()
-    rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
-    return int(rate.decode('utf-8'))
+    # rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
+    # return int(rate.decode('utf-8'))
+    return raw_rate
 
 # try:
 #   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
