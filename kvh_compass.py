@@ -25,6 +25,8 @@ class Kvh_Compass:
       sys.exit()
     self.ser.write(f'=vd,{self.declination}\r\n'.encode())
     print(f'Declination: {self.declination}')
+    self.ser.write(b'?vd\r')
+    print(self.ser.readline())
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
