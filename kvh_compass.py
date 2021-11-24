@@ -15,7 +15,7 @@ class Kvh_Compass:
     self.redis = RedisAdapter()
     self.heading = {'heading': 0}
     try:
-      self.declination = geomag.declination(float(self.redis.get("gps_lat")), float(self.redis.get("gps_lng")))
+      self.declination = geomag.declination(float(self.redis.get("msrs_lat")), float(self.redis.get("msrs_lng")))
     except:
       self.declination = geomag.declination(38.801744, -77.073058)
     try:
@@ -23,6 +23,8 @@ class Kvh_Compass:
     except:
       print('Error: Redis connection failed')
       sys.exit()
+    self.ser.write(f'=vd,{self.declination}\r\n'.encode())
+    print(f'Declination: {self.declination}')
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
