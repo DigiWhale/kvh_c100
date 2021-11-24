@@ -1,5 +1,8 @@
 import serial
 import time
+from adapters.redisAdapter import RedisAdapter
+import geomag
+import sys
 
 class Kvh_Compass:
   def __init__(self, port):
@@ -8,6 +11,17 @@ class Kvh_Compass:
     self.ser.write(b'=r600\r\n') #set message rate to 600/minute
     time.sleep(.2)
     self.ser.write(b'h\r\n') #stop automatic message transmission
+    self.redis = RedisAdapter()
+    self.heading = {'heading': 0}
+    try:
+      self.declination = geomag.declination(float(self.redis.get("gps_lat")), float(self.redis.get("gps_lng")))
+    except:
+      self.declination = geomag.declination(38.801744, -77.073058)
+    try:
+      self.redis.channel_client()
+    except:
+      print('Error: Redis connection failed')
+      sys.exit()
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
@@ -18,22 +32,8 @@ class Kvh_Compass:
       self.ser.write(b'd0\r\n')
       nmea_sentence = self.ser.readline()
       heading = nmea_sentence.split(b',')[1]
+    self.heading['heading'] = float(heading.decode('utf-8'))
     return float(heading.decode('utf-8'))
-
-# try:
-#   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
-#   heading = 0
-#   while ser:
-#     # init_heading = float(ser.read(19).decode('utf-8').split(',')[1])
-#     # if init_heading < 361:
-#     #   heading = init_heading
-#     # print(heading)
-#     ser.write(b'?w\r\n')
-#     print(ser.readline())
-
-# except Exception as e:
-#   print(e)
-#   ser.close()
   
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
