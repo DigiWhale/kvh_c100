@@ -10,6 +10,7 @@ class Kvh_Compass:
   def set_msg_rate(self, rate):
     self.ser.write(f'=r,{rate}\r\n'.encode())
     print(self.ser.readline())
+    print(self.ser.readline())
     print('Set rate to {}'.format(rate))
     
   def get_heading(self):
