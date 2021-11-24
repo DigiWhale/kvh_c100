@@ -12,7 +12,6 @@ class Kvh_Compass:
     print(msg)
     self.ser.write(msg)
     print(self.ser.readline())
-    print(self.ser.readline())
     print('Set rate to {}'.format(rate))
     
   def get_heading(self):
@@ -50,7 +49,7 @@ class Kvh_Compass:
   
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
-  kvh_compass.set_msg_rate('006')
+  kvh_compass.set_msg_rate('6')
   while True:
     print(kvh_compass.get_heading())
     # time.sleep(1)
