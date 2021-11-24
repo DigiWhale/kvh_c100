@@ -23,13 +23,15 @@ class Kvh_Compass:
     except:
       print('Error: Redis connection failed')
       sys.exit()
-    self.ser.write(b'=v,t\r\n')
-    print(self.ser.readline())
-    time.sleep(.2)
-    self.ser.write(f'=vd,{self.declination}\r\n'.encode())
     print(f'Declination: {self.declination}')
-    self.ser.write(b'?vd\r')
-    print(self.ser.readline())
+    self.ser.write(b'=v,t\r\n') # turn on variation
+    print("variation active? ", self.ser.readline())
+    time.sleep(.2)
+    self.ser.write(f'=vd,{self.declination}\r\n'.encode()) # set variation
+    print("variation set ", self.ser.readline())
+    time.sleep(.2)
+    self.ser.write(b'?vd\r') # read variation
+    print("variation = ", self.ser.readline())
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
