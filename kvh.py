@@ -9,6 +9,7 @@ class Kvh_Compass:
   def get_heading(self):
     self.ser.write(b'd0\r\n')
     nmea_sentence = self.ser.readline()
+    print(nmea_sentence)
     try:
       heading = nmea_sentence.split(b',')[1]
     except:
