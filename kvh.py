@@ -53,7 +53,5 @@ class Kvh_Compass:
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
   while True:
-    kvh_compass.get_heading()
+    print(kvh_compass.get_heading())
     kvh_compass.publish_data_to_redis()
-    # time.sleep(1)
-    # print(kvh_compass.ser.readline())
