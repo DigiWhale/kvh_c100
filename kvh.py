@@ -5,7 +5,12 @@ class Kvh_Compass:
   def __init__(self, port):
     self.ser = serial.Serial(port, 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
     self.ser.write(b'h\r\n')
-    self.ser.write(b'r,006\r\n')
+    self.ser.write(b'r,6\r\n')
+    
+  def set_msg_rate(self, rate):
+    self.ser.write(b'r,{}\r\n'.format(rate).encode('utf-8'))
+    self.ser.readline()
+    print('Set rate to {}'.format(rate))
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
@@ -42,6 +47,7 @@ class Kvh_Compass:
   
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
+  kvh_compass.set_msg_rate(6)
   while True:
     print(kvh_compass.get_heading())
     # time.sleep(1)
