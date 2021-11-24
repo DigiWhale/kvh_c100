@@ -36,6 +36,9 @@ class Kvh_Compass:
     time.sleep(.2)
     self.ser.write(b'?vd\r') # read variation
     print("variation = ", self.ser.readline())
+    time.sleep(.2)
+    self.ser.write(b'?cs1\r') # read variation
+    print("calibration score = ", self.ser.readline())
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
