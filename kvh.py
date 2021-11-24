@@ -5,7 +5,7 @@ class Kvh_Compass:
   def __init__(self, port):
     self.ser = serial.Serial(port, 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
     self.ser.write(b'h\r\n')
-    self.ser.write(b'r,6\r\n')
+    self.ser.write(b'r,006\r\n')
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
