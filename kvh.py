@@ -4,23 +4,14 @@ import time
 class Kvh_Compass:
   def __init__(self, port):
     self.ser = serial.Serial(port, 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
-    # self.ser.write(b's\r\n')
-    self.ser.write(b'=r600\r\n')
+    # self.ser.write(b's\r\n') #start automatic message transmission
+    self.ser.write(b'=r600\r\n') #set message rate to 600/minute
     time.sleep(.2)
-    self.ser.write(b'h\r\n')
-    
-  def set_msg_rate(self, rate):
-    msg = b'=r,600\r'
-    # msg = f'=r,{rate}\r'.encode()
-    print(msg)
-    self.ser.write(msg)
-    print(self.ser.readline())
-    print('Set rate to {}'.format(rate))
+    self.ser.write(b'h\r\n') #stop automatic message transmission
     
   def get_heading(self):
     self.ser.write(b'd0\r\n')
     nmea_sentence = self.ser.readline()
-    # print(nmea_sentence)
     try:
       heading = nmea_sentence.split(b',')[1]
     except:
@@ -55,5 +46,5 @@ if __name__ == '__main__':
   while True:
     print(kvh_compass.get_heading())
     # time.sleep(1)
-    # print(kvh_compass.get_rate())
+    print(kvh_compass.get_rate())
     # print(kvh_compass.ser.readline())
