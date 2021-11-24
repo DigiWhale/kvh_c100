@@ -9,20 +9,20 @@ class Kvh_Compass:
   def get_heading(self):
     self.ser.write(b'd0\r\n')
     nmea_sentence = self.ser.readline()
-    print(nmea_sentence)
+    # print(nmea_sentence)
     try:
       heading = nmea_sentence.split(b',')[1]
     except:
       self.ser.write(b'd0\r\n')
       nmea_sentence = self.ser.readline()
       heading = nmea_sentence.split(b',')[1]
-    return heading.decode('utf-8')
+    return float(heading.decode('utf-8'))
   
   def get_rate(self):
     self.ser.write(b'?r\r\n')
     raw_rate = self.ser.readline()
     rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
-    return rate.decode('utf-8')
+    return int(rate.decode('utf-8'))
 
 # try:
 #   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
