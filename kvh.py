@@ -16,6 +16,11 @@ class Kvh_Compass:
       nmea_sentence = self.ser.readline()
       heading = nmea_sentence.split(b',')[1]
     return heading.decode('utf-8')
+  
+  def get_rate(self):
+    self.ser.write(b'?r\r\n')
+    rate = self.ser.readline()
+    return rate
 
 # try:
 #   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
@@ -37,3 +42,4 @@ if __name__ == '__main__':
   while True:
     print(kvh_compass.get_heading())
     time.sleep(1)
+    print(kvh_compass.get_rate())
