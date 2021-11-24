@@ -46,5 +46,5 @@ if __name__ == '__main__':
   while True:
     print(kvh_compass.get_heading())
     # time.sleep(1)
-    print(kvh_compass.get_rate())
+    # print(kvh_compass.get_rate())
     # print(kvh_compass.ser.readline())
