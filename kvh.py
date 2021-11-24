@@ -3,6 +3,7 @@ import time
 from adapters.redisAdapter import RedisAdapter
 import geomag
 import sys
+from datetime import datetime
 
 class Kvh_Compass:
   def __init__(self, port):
@@ -35,9 +36,24 @@ class Kvh_Compass:
     self.heading['heading'] = float(heading.decode('utf-8'))
     return float(heading.decode('utf-8'))
   
+  def publish_data_to_redis(self):
+    object_data = {
+        "sensor_type": 8,
+        "sensor_value":{
+            "kvh_heading": self.heading['heading'],                   
+        },                
+        "timestamp": datetime.strftime(datetime.today(), '%Y-%m-%d %H:%M:%S.%f')
+    }
+    try:
+      self.redis.send_message('msrs_raspberry', object_data)
+    except:
+      print('Error: Redis connection failed')
+      sys.exit()
+  
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
   while True:
-    print(kvh_compass.get_heading())
+    kvh_compass.get_heading()
+    kvh_compass.publish_data_to_redis()
     # time.sleep(1)
     # print(kvh_compass.ser.readline())
