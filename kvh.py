@@ -10,6 +10,7 @@ try:
     # print(heading)
     ser.write(b'?b\r\n')
     print(ser.readline())
+    print(ser.readline())
 
 except Exception as e:
   print(e)
