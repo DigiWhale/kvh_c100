@@ -8,7 +8,7 @@ class Kvh_Compass:
     # self.ser.write(b'r,6\r\n')
     
   def set_msg_rate(self, rate):
-    msg = f'=r{rate}\r\n'.encode()
+    msg = f'=r,{rate}\r'.encode()
     print(msg)
     self.ser.write(msg)
     print(self.ser.readline())
