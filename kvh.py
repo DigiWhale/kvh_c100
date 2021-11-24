@@ -6,7 +6,7 @@ class Kvh_Compass:
     self.ser = serial.Serial(port, 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
     # self.ser.write(b'h\r\n')
     self.ser.write(b's\r\n')
-    self.ser.write(b'r,600\r\n')
+    self.ser.write(b'=r,600\r\n')
     
   def set_msg_rate(self, rate):
     msg = b'=r,600\r'
