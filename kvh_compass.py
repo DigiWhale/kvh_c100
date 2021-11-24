@@ -23,7 +23,8 @@ class Kvh_Compass:
     except:
       print('Error: Redis connection failed')
       sys.exit()
-    self.ser.write(f'=v,t\r\n'.encode())
+    self.ser.write(b'=v,t\r\n')
+    print(self.ser.readline())
     time.sleep(.2)
     self.ser.write(f'=vd,{self.declination}\r\n'.encode())
     print(f'Declination: {self.declination}')
