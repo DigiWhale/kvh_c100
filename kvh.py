@@ -49,7 +49,7 @@ class Kvh_Compass:
   
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
-  kvh_compass.set_msg_rate('6')
+  kvh_compass.set_msg_rate('600')
   while True:
     print(kvh_compass.get_heading())
     # time.sleep(1)
