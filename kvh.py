@@ -53,6 +53,7 @@ if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
   kvh_compass.set_msg_rate('600')
   while True:
-    print(kvh_compass.get_heading())
+    # print(kvh_compass.get_heading())
     # time.sleep(1)
-    print(kvh_compass.get_rate())
+    # print(kvh_compass.get_rate())
+    print(kvh_compass.ser.readline())
