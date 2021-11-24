@@ -9,7 +9,8 @@ class Kvh_Compass:
   def get_heading(self):
     self.ser.write(b'd0\r\n')
     nmea_sentence = self.ser.readline()
-    return nmea_sentence
+    heading = nmea_sentence.split(b',')[1]
+    return heading.decode('utf-8')
 
 # try:
 #   ser = serial.Serial('/dev/ttyS0', 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
@@ -28,7 +29,6 @@ class Kvh_Compass:
   
 if __name__ == '__main__':
   kvh_compass = Kvh_Compass('/dev/ttyS0')
-  print(kvh_compass.get_heading())
-  time.sleep(1)
   while True:
-    kvh_compass.ser.readline()
+    print(kvh_compass.get_heading())
+    time.sleep(1)
