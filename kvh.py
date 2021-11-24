@@ -5,7 +5,7 @@ class Kvh_Compass:
   def __init__(self, port):
     self.ser = serial.Serial(port, 4800, bytesize=8, parity='N', stopbits=1, timeout=1)
     # self.ser.write(b'h\r\n')
-    self.ser.write(b's\r\n')
+    # self.ser.write(b's\r\n')
     self.ser.write(b'=r600\r\n')
     
   def set_msg_rate(self, rate):
@@ -54,5 +54,5 @@ if __name__ == '__main__':
   while True:
     # print(kvh_compass.get_heading())
     # time.sleep(1)
-    print(kvh_compass.get_rate())
+    # print(kvh_compass.get_rate())
     print(kvh_compass.ser.readline())
