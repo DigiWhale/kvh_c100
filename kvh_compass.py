@@ -40,7 +40,7 @@ class Kvh_Compass:
     self.ser.write(b'?cs1\r') # read variation
     print("calibration score 1= ", self.ser.readline())
     time.sleep(.2)
-    self.ser.write(b'?cs\r') # read variation
+    self.ser.write(b'?cs2\r') # read variation
     print("calibration score 2= ", self.ser.readline())
     time.sleep(.2)
     self.ser.write(b'?w\r') # read variation
