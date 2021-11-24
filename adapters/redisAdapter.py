@@ -19,7 +19,7 @@ class RedisAdapter():
         """
         Class to work as an adapter to the Redis cache database, by using a config.json file it is possible to set the server connection and port of communication
         """
-        f = open('/home/pi/MSRS-RPI/config.json')
+        f = open('/home/pi/kvh_c100/config.json')
         json_config = json.loads(f.read())  
         server = json_config['server']
         hostname = server['local'] if server['use_local'] == True else server['remote'] 
