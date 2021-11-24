@@ -25,6 +25,9 @@ class Kvh_Compass:
       sys.exit()
     print(f'Declination: {self.declination}')
     self.ser.write(b'=v,t\r\n') # turn on variation
+    print("variation turned on ", self.ser.readline())
+    time.sleep(.2)
+    self.ser.write(b'?v\r\n') # variation active?
     print("variation active? ", self.ser.readline())
     time.sleep(.2)
     self.ser.write(f'=vd,{self.declination}\r\n'.encode()) # set variation
