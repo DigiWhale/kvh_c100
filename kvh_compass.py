@@ -24,6 +24,7 @@ class Kvh_Compass:
       print('Error: Redis connection failed')
       sys.exit()
     print(f'Declination: {self.declination}')
+    time.sleep(.2)
     self.ser.write(b'=v,t\r\n') # turn on variation
     print("variation turned on ", self.ser.readline())
     time.sleep(.2)
