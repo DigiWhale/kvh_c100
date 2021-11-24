@@ -1,0 +1,12 @@
+{
+    "server":{
+        "use_local": true,        
+        "local": "10.0.0.5",
+        "remote": "ec2-54-167-28-153.compute-1.amazonaws.com",
+        "port": "8000"
+    },
+    "debugger": {
+        "production": false,
+        "stop_after": 60
+    }
+}
