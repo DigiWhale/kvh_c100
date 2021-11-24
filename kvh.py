@@ -23,11 +23,8 @@ class Kvh_Compass:
   def get_rate(self):
     self.ser.write(b'?r\r\n')
     raw_rate = self.ser.readline()
-    try:
-      rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
-    except:
-      raw_rate = self.ser.readline()
-      rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
+    print(raw_rate)
+    rate = raw_rate.split(b' ')[1]. replace(b'\r', b'')
     return int(rate.decode('utf-8'))
 
 # try:
