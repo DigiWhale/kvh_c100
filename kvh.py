@@ -8,7 +8,7 @@ try:
     # if init_heading < 361:
     #   heading = init_heading
     # print(heading)
-    ser.write(b'?b\r\n')
+    ser.write(b'?w\r\n')
     print(ser.readline())
 
 except Exception as e:
